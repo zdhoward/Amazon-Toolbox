@@ -9,7 +9,7 @@ require_once('../authenticate.php');
 
 <!DOCTYPE html>
 <html>
-<head></head>
+<head><script src="../assets/js/clipboard.min.js"></script></head>
   <body>
     <form action ="#" method='POST'>
       <table>
@@ -48,7 +48,15 @@ require_once('../authenticate.php');
               $arr = explode('\r\n', $temp);
               $arr = array_filter($arr);
               $arr = array_unique($arr);
-              $wcount = count($arr);
+
+              //debugDump($arr);
+              $replace = array("- S/N:");
+              array_splice($arr, 1, 0, $replace);
+              $arr[0] = trim($arr[0]);
+              //$arr = $temp;
+              //debugDump($temp);
+
+              $wcount = count($arr) - 2;
               $result = implode('\r\n', $arr);
               //debugDump($result);
 
@@ -57,7 +65,7 @@ require_once('../authenticate.php');
               $result = str_replace('\r\n', ' ', $result);
               $result = str_replace('"', '', $result);
               echo ("<p>[$wcount]</p>");
-              echo ("<textarea rows='10' cols='60'>" . $result . "</textarea>");
+              echo ("<textarea id='result' rows='10' cols='60'>" . $result . "</textarea>");
 
               /*
               //echo ("Hello World");
@@ -87,7 +95,18 @@ require_once('../authenticate.php');
           ?>
           </td>
         </tr>
-        <td><input type='submit' name='submit'></td>
+        <td><input type='submit' name='submit'><button class='btn' data-clipboard-action='cut' data-clipboard-target='#result'>Cut</button></td>
+        <script>
+        var clipboard = new Clipboard('.btn');
+
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+        </script>
       </table>
     </form>
   </body>

@@ -112,6 +112,10 @@ require_once('authenticate.php');
 					      <td><a href='Toolbox/viewListings.php' target='_blank'><button class="btn btn-block btn-sm btn-warning">Generate links to the Amazon Listing of each product we sell.</button></a></td>
 					    </tr>
 							<tr>
+					      <td><a href='Toolbox/viewListingsByBrand.php' target='_blank'><button class="btn btn-block btn-sm btn-warning btn-fill">View Listings By Brand</button></a></td>
+					      <td><a href='Toolbox/viewListingsByBrand.php' target='_blank'><button class="btn btn-block btn-sm btn-warning">Generate links to the Amazon Listing of each product by brand that we sell.</button></a></td>
+					    </tr>
+							<tr>
 					      <td><a href='Toolbox/generateBarcodes.php' target='_blank'><button class="btn btn-block btn-sm btn-warning btn-fill">Generate Barcodes</button></a></td>
 					      <td><a href='Toolbox/generateBarcodes.php' target='_blank'><button class="btn btn-block btn-sm btn-warning">Generate a Barcode Catalog.</button></a></td>
 					    </tr>
@@ -146,6 +150,10 @@ require_once('authenticate.php');
 					    <tr>
 					      <td><a href='Toolbox/checkBuyBox.php' target='_blank'><button class="btn btn-block btn-sm btn-warning btn-fill">Check Buy Box</button></a></td>
 					      <td><a href='Toolbox/checkBuyBox.php' target='_blank'><button class="btn btn-block btn-sm btn-warning">Compares all buy boxes, filtering out buy boxes lost from lack of inventory.</button></a></td>
+					    </tr>
+							<tr>
+					      <td><a href='Toolbox/checkBuyBoxByBrand.php' target='_blank'><button class="btn btn-block btn-sm btn-warning btn-fill">Check Buy Box By Brand</button></a></td>
+					      <td><a href='Toolbox/checkBuyBoxByBrand.php' target='_blank'><button class="btn btn-block btn-sm btn-warning">Compares all buy boxes by brand, filtering out buy boxes lost from lack of inventory.</button></a></td>
 					    </tr>
 					    <tr>
 					      <td><a href='Toolbox/checkInventoryTurnRate.php' target='_blank'><button class="btn btn-block btn-sm btn-warning btn-fill">Check Inventory Turn Rate</button></a></td>
