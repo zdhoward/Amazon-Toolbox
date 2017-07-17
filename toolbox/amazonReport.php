@@ -50,6 +50,10 @@ include_once("../assets/lib/libAmazonReports.php");
             $FBAInv = "NONE";
           }
 
+          if ($FBAInv == 0) {
+            $buyBox = "";
+          }
+
           //Conditional Modifiers
           if ($needed > 0) {
             //$striped = "pure-table-odd";

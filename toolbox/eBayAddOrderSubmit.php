@@ -35,6 +35,7 @@ if ($_POST) {
 
 addEbayOrder($insert);
 
-echo ("eBay Order Added!");
+//echo ("eBay Order Added!");
+header('Location: eBayOrdersPending.php');
 }
 ?>

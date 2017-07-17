@@ -473,6 +473,28 @@
 
   }
 
+  function setBarcodeByID($id, $sku) {
+    global $credentials;
+
+    // Open DB Connection
+    $conn = new mysqli($credentials['ServerName'], $credentials['Username'], $credentials['Password'], $credentials['Database']);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // update DB with new totalSold
+    $sql = "UPDATE tbl_product SET barcode='" . $sku . "' WHERE id='" . $id . "'";
+
+    // Query DB
+    $result = $conn->query($sql);
+
+    // Free resources and close DB Connection
+    $conn->close();
+
+  }
+
   function getNameByID($id) {
     global $credentials;
     $name = "";
@@ -780,7 +802,39 @@
 
     return $SKUs;
 
+  }
 
+  // Get all empty SKUs
+  function getEmptyBarcodes() {
+    global $credentials;
+    $SKUs = array();
+
+    // Open DB Connection
+    $conn = new mysqli($credentials['ServerName'], $credentials['Username'], $credentials['Password'], $credentials['Database']);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // Construct SQL Query
+    $sql = "SELECT id, brand, name, barcode FROM tbl_product WHERE (sku != '' AND sku IS NOT NULL) AND (barcode='' OR barcode IS NULL) AND hidden='0' ORDER BY brand ASC, name ASC";
+
+    // Query DB
+    $result = $conn->query($sql);
+
+    //echo "Hello World";
+
+    // Decipher response
+    while ($row = $result->fetch_assoc()) {
+      $product = array('id'=>$row['id'], 'brand'=>$row['brand'], 'name'=>$row['name'], 'barcode'=>$row['barcode']);
+      array_push($SKUs, $product);
+    }
+
+    // Free resources and close DB Connection
+    $conn->close();
+
+    return $SKUs;
 
   }
 
@@ -1435,6 +1489,8 @@
     $xml = simplexml_load_string($response);
     $json = json_encode($xml);
     $array = json_decode($json,TRUE);
+
+    //debugDump($xml);
 
     return $array["ListInventorySupplyResult"]["InventorySupplyList"]["member"];
 

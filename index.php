@@ -91,6 +91,10 @@ require_once('authenticate.php');
 					      <td><a href='Toolbox/setEmptySKUs.php' target='_blank'><button class="btn btn-block btn-sm btn-success btn-fill">Set Empty SKU</button></a></td>
 					      <td><a href='Toolbox/setEmptySKUs.php' target='_blank'><button class="btn btn-block btn-sm btn-success">Looks for products that don't have a SKU yet, allow to add one.</button></a></td>
 					    </tr>
+							<tr>
+					      <td><a href='Toolbox/setEmptyBarcodes.php' target='_blank'><button class="btn btn-block btn-sm btn-success btn-fill">Set Empty Barcodes</button></a></td>
+					      <td><a href='Toolbox/setEmptyBarcodes.php' target='_blank'><button class="btn btn-block btn-sm btn-success">Looks for products that don't have a Barcode yet, allow to add one.</button></a></td>
+					    </tr>
 					    <tr>
 					      <td><a href='Toolbox/setProduct.php' target='_blank'><button class="btn btn-block btn-sm btn-success btn-fill">Set Product</button></a></td>
 					      <td><a href='Toolbox/setProduct.php' target='_blank'><button class="btn btn-block btn-sm btn-success">Allows you to set many parameters of a product.</button></a></td>
